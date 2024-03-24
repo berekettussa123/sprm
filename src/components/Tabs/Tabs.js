@@ -209,9 +209,9 @@ const TabsCon = () => {
               </div>
               <div
                 className={
-                  activeTab === 2
-                    ? `tab tab1 ${active === 2 ? 'active' : ''}`
-                    : `tab tab1 ${active === 2 ? 'active' : ''}`
+                  activeTab === 3
+                    ? `tab tab1 ${active === 3 ? 'active' : ''}`
+                    : `tab tab1 ${active === 3 ? 'active' : ''}`
                 }
                 style={{
                   width: isMobile ? '100px' : '160px',
@@ -221,11 +221,11 @@ const TabsCon = () => {
                   zIndex: '1',
                 }}
                 onClick={() => {
-                  handleActive(2);
-                  window.open(
-                    'https://sprm-onepager.gitbook.io/one-pager/',
-                    '_blank'
-                  );
+                  handleActive(3);
+                  // window.open(
+                  //   'https://sprm-onepager.gitbook.io/one-pager/',
+                  //   '_blank'
+                  // );
                 }}
               >
                 📄
