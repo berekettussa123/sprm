@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  background-image: url("./assets/bg3.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.video-background {
+}
+
+.app {
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    margin: 0.3rem;
+    background-image: url("./assets/bg2.jpeg");
+  }
+}
+
+/* mobile */
+
+@media screen and (max-width: 768px) {
+}
