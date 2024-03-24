@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from "react";
-import MineBreed from "../../assets/banner.jpeg";
-import { IoIosArrowDown } from "react-icons/io";
-import Token1 from "../../assets/logo.png";
-import Token2 from "../../assets/logo.png";
-import "./mine.css";
-import { useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
-import useContract from "../../hooks/useContracts";
+import React, { useEffect, useState } from 'react';
+import MineBreed from '../../assets/banner.jpeg';
+import BannerModels from '../../assets/bannerm.jpg';
+import { IoIosArrowDown } from 'react-icons/io';
+import Token1 from '../../assets/logo.png';
+import Token2 from '../../assets/logo.png';
+import './mine.css';
+import { useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers/react';
+import useContract from '../../hooks/useContracts';
 
-import ClipLoader from "react-spinners/ClipLoader";
-import DiscreteSlider from "../Slider/Slider";
-import StakeSlider from "../Slider/StakeSlider";
-import { isMobile } from "react-device-detect";
+import ClipLoader from 'react-spinners/ClipLoader';
+import DiscreteSlider from '../Slider/Slider';
+import StakeSlider from '../Slider/StakeSlider';
+import { isMobile } from 'react-device-detect';
 
 const override = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'red',
 };
 const Mine = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [selectedDays, setSelectedDays] = useState(30);
   let [loading, setLoading] = useState(false);
-  let [color] = useState("#ffffff");
+  let [color] = useState('#ffffff');
   const [data, setData] = useState(null);
-  const [action, setAction] = useState("stake");
+  const [action, setAction] = useState('stake');
 
   const { open } = useWeb3Modal();
   const { address, isConnected } = useWeb3ModalAccount();
@@ -38,7 +39,7 @@ const Mine = () => {
     }
   }, [address, isConnected]);
 
-  const [value1, setValue1] = useState("");
+  const [value1, setValue1] = useState('');
 
   const handleChange1 = (event) => {
     const inputValue = event.target.value;
@@ -48,8 +49,8 @@ const Mine = () => {
   const doNothing = () => {};
 
   const _stake = async () => {
-    console.log("stake");
-    setAction("stake");
+    console.log('stake');
+    setAction('stake');
     setLoading(true);
     try {
       await stake(value1, selectedDays);
@@ -61,7 +62,7 @@ const Mine = () => {
   };
 
   const _unStake = async () => {
-    setAction("unstake");
+    setAction('unstake');
     setLoading(true);
     try {
       await unStake(value1);
@@ -74,7 +75,7 @@ const Mine = () => {
   };
 
   const _withdrawReward = async () => {
-    setAction("withdraw");
+    setAction('withdraw');
     setLoading(true);
     try {
       await withdrawReward();
@@ -92,9 +93,9 @@ const Mine = () => {
         <div className="you-pay-container">
           <div
             style={{
-              display: "flex",
-              flexDirection: "col",
-              gap: ".5rem",
+              display: 'flex',
+              flexDirection: 'col',
+              gap: '.5rem',
             }}
           >
             <input
@@ -103,7 +104,7 @@ const Mine = () => {
               onChange={handleChange1}
               placeholder="0"
               style={{
-                width: "100%",
+                width: '100%',
               }}
             />
 
@@ -146,7 +147,7 @@ const Mine = () => {
         {/* Stake Slider */}
         <div
           style={{
-            padding: isMobile ? "0 10px" : "0 5px",
+            padding: isMobile ? '0 10px' : '0 5px',
           }}
         >
           <StakeSlider setSelectedDays={setSelectedDays} />
@@ -156,23 +157,23 @@ const Mine = () => {
         </div> */}
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "1rem",
-            marginTop: "4rem",
-            marginBottom: "1rem",
-            height: "fit-content",
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1rem',
+            marginTop: '4rem',
+            marginBottom: '1rem',
+            height: 'fit-content',
           }}
         >
           <button
             className="connWalBtn"
             style={{
-              flex: "3",
-              height: "fit-content !important",
+              flex: '3',
+              height: 'fit-content !important',
             }}
             onClick={address ? _stake : doNothing}
           >
-            {action === "stake" && loading ? (
+            {action === 'stake' && loading ? (
               <ClipLoader
                 color={color}
                 loading={loading}
@@ -182,18 +183,18 @@ const Mine = () => {
                 data-testid="loader"
               />
             ) : (
-              "Stake"
+              'Stake'
             )}
           </button>
           <button
             className="connWalBtn"
             style={{
-              flex: "2",
-              backgroundColor: "red",
+              flex: '2',
+              backgroundColor: 'red',
             }}
-            onClick={address ? _unStake : ""}
+            onClick={address ? _unStake : ''}
           >
-            {action === "unstake" && loading ? (
+            {action === 'unstake' && loading ? (
               <ClipLoader
                 color="#175eee"
                 loading={loading}
@@ -202,33 +203,33 @@ const Mine = () => {
                 data-testid="loader"
               />
             ) : (
-              "Unstake"
+              'Unstake'
             )}
           </button>
         </div>
 
         <div
           style={{
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            gap: "1rem",
-            flexDirection: "row",
-            alignItems: "center",
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1rem',
+            flexDirection: 'row',
+            alignItems: 'center',
           }}
         >
           <h4
             style={{
-              color: "white",
-              textAlign: "center",
-              fontSize: "1.5rem",
+              color: 'white',
+              textAlign: 'center',
+              fontSize: '1.5rem',
             }}
           >
             $SPRM Staked :
           </h4>
           <p
             style={{
-              fontSize: "1.5rem",
+              fontSize: '1.5rem',
             }}
           >
             {data ? Number(data.myInvestment).toFixed(1) : 0}
@@ -237,16 +238,16 @@ const Mine = () => {
 
         <div
           className="you-pay-container"
-          style={{ backgroundColor: "transparent", border: "none" }}
+          style={{ backgroundColor: 'transparent', border: 'none' }}
         >
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: ".5rem",
-              width: "50%",
-              paddingBottom: "1.5rem",
-              marginTop: "1rem",
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '.5rem',
+              width: '50%',
+              paddingBottom: '1.5rem',
+              marginTop: '1rem',
             }}
           >
             <input
@@ -258,7 +259,7 @@ const Mine = () => {
           <div className="dropdown-container">
             <div className="selected-option">
               <img src={Token2} alt="icons" width={80} height={30} />
-              <h3 style={{ fontSize: "1.5rem" }}></h3>
+              <h3 style={{ fontSize: '1.5rem' }}></h3>
               {/* <IoIosArrowDown /> */}
             </div>
           </div>
@@ -267,7 +268,7 @@ const Mine = () => {
           className="connWalBtn"
           onClick={isConnected ? (loading ? () => {} : _withdrawReward) : open}
         >
-          {action === "withdraw" && loading ? (
+          {action === 'withdraw' && loading ? (
             <ClipLoader
               color={color}
               loading={loading}
@@ -277,23 +278,24 @@ const Mine = () => {
               data-testid="loader"
             />
           ) : isConnected ? (
-            "Withdraw"
+            'Withdraw'
           ) : (
-            "Connect Wallet"
+            'Connect Wallet'
           )}
         </button>
       </div>
       <div className="containerr ">
         <img
-          src={MineBreed}
+          src={BannerModels}
           alt="img"
           style={{
-            top: "0",
-            left: "0",
-            width: isMobile ? "370px" : "500px",
-            height: "200px",
-            borderRadius: "20px",
-            marginLeft: "",
+            top: '0',
+            left: '0',
+            objectFit: 'contain',
+            width: isMobile ? '370px' : '500px',
+            height: '250px',
+            borderRadius: '20px',
+            marginLeft: '',
           }}
         />
       </div>
